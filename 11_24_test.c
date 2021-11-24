@@ -5,8 +5,8 @@
 
 int main()
 {
+	int i = 0；
 	int arr[10] = { 0 };
-	int i = 0;
 	for (int j = 0; j < 10; j++)
 	{
 		arr[j] = j + 1;
@@ -19,3 +19,5 @@ int main()
 	system("pause");
 	return 0;
 }
+//此代码为错误示范，为研究栈空间
+//越界访问引发问题，不越界访问即可解决问题
