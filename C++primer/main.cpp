@@ -1,154 +1,69 @@
 #define _CRT_SECURE_NO_WARNINGS
 
 #include<iostream>
-
-#include<stdio.h>
-
-bool IfUgly(int number)
-{
-    /*丑数*/
-    if (number == 0)return false;
-
-    while (!(number % 2))number /= 2;
-    while (!(number % 3))number /= 3;
-    while (!(number % 5))number /= 5;
-
-    return ((number == 1) || (number == -1)) ? true : false;
-}
+#include<cstring>
+#include"Sales_item.h"
 
 int main()
 {
-    /*丑数和丑代码*/
-    for (int i = -100; i <= 100; i++)if (IfUgly(i))printf("%02d ", i);
-    printf("\n");
-    return 0;
+	Sales_item total;
+	if (std::cin >> total)
+	{
+		Sales_item trans;
+		while (std::cin >> trans)
+		{
+			if (total.isbn() == trans.isbn())
+			{
+				total += trans;
+			}
+			else
+			{
+				std::cout << total << std::endl;
+				total = trans;
+			}
+		}
+		std::cout << total << std::endl;
+	}
+	else
+	{
+		std::cout << "NO data ?!" << std::endl;
+		return -1;
+	}
+	return 0;
 }
 
+//struct S
+//{
+//	int a;
+//	int b;
+//	char ch[256];
+//};
+//
 //int main()
 //{
-//	int currVal = 0, val = 0;
-//	if (std::cin >> currVal)
-//	{
-//		int cnt = 1;
-//		while (std::cin >> val)
-//		{
-//			if (val == currVal)
-//			{
-//				++cnt;
-//			}
-//			else
-//			{
-//				std::cout << currVal << " occurs "
-//					<< cnt << "times" << std::endl;
-//				currVal = val;
-//				cnt = 1;
-//			}
-//		}
-//		std::cout << currVal << " occurs "
-//			<< cnt << "times" << std::endl;
-//	}
+//	//int* a = new int;
+//	//delete a;
+//	//a = NULL;
+//	//struct S* s = new struct S;
 //
-//	return 0;
-//}
-
-//int main()
-//{
-//	//输入一串数，计算和，输入EOF结束输入
-//	//EOF —— End Of File
-//	int sum = 0;
-//	int value = 0;
-//	std::cout << "The sum is ";
-//	while (std::cin >> value)
-//	{
-//		sum += value;
-//	}
-//	std::cout << "= " << sum << std::endl;
-//	return 0;
-//}
-
-//int main()
-//{
+//	//s->a = 100;
+//	//s->b = 200;
+//	//memcpy(s->ch, "Hello world\n", strlen("Hello world\n") + 1);
 //
-//	//int i = 0, sum = 0;
+//	//printf(s->ch);
+//	//delete s;
+//	//s = NULL;
 //
-//	//for (i = -100; i <= 100; i++)
+//	//char* memry = new char[4 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024];
+//	//if (!memry)
 //	//{
-//	//	sum += i;
-//	//}
-//	//std::cout << sum << std::endl;
-//
-//	//打印输入范围内所有整数
-//	//int A, B;
-//	//std::cin >> A >> B;
-//	//int Tmp = 0;
-//	//if (A > B)
-//	//{
-//	//	while (B <= A)
-//	//	{
-//	//		std::cout << B++ << ' ';
-//	//	}
-//	//	std::cout << std::endl;
-//	//}
-//	//else if (A < B)
-//	//{
-//	//	while (A <= B)
-//	//	{
-//	//		std::cout << A++ << ' ';
-//	//	}
-//	//	std::cout << std::endl;
+//	//	std::cout << "NO MEMRY" << std::endl;
+//	//	return NULL;
 //	//}
 //	//else
 //	//{
-//	//	std::cout << A << std::endl;
+//	//	std::cout << (int*)memry << std::endl;
 //	//}
-//
-//	//用--打印10到0之间的所有整数
-//	//int i = 10;
-//	//while (i)
-//	//{
-//	//	std::cout << i-- << ' ';
-//	//}
-//	//std::cout << i << std::endl;
-//
-//	//打印50加到100的和
-//	//int i = 50;
-//	//int sum = 0;
-//	//while (i++ <= 100)
-//	//{
-//	//	sum += i;
-//	//	std::cout << sum << ' ';
-//	//}
-//	//std::cout << std::endl;
-//
-//	//std::cout << "The sum of 50 to 100 is " << sum << std::endl;
-//
-//	return 0;
-//}
-
-//int main()
-//{
-//	int sum = 0, val = 0;
-//	int n = 0;
-//	std::cout << "Enter a Val" << std::endl;
-//	std::cin >> n;
-//
-//	for (val = 1; val <= n; val++)
-//	{
-//		sum += val;
-//		std::cout << sum << " ";
-//	}
-//
-//	std::cout << "\nThe sum is " << sum << std::endl;
-//
-//	return 0;
-//}
-
-//int main()
-//{
-//	std::cout << "Enter Two Numbers" << std::endl;
-//	int v1 = 0, v2 = 0;
-//	std::cin >> v1 >> v2;
-//	std::cout << "The Sum Of " << v1 << " And " << v2 << " Is " << v1 + v2 << std::endl;
 //
 //	return 0;
 //}
