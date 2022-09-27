@@ -5,6 +5,47 @@
 #include<time.h>
 #include<stdlib.h>
 
+//空间复杂度
+
+////冒泡排序 O(1)
+//void BubbleSort(int* a, int n)
+//{
+//	assert(a);
+//	size_t end = 0, i = 0;
+//	for (end = n; end > 0; --end)
+//	{
+//		int exchange = 0;
+//		for (i = 1; i < end; ++i)
+//		{
+//			if (a[i - 1] > a[i])
+//			{
+//				
+//				int Tmp = a[i];
+//				a[i] = a[i - 1];
+//				a[i - 1] = Tmp;
+//				exchange = 1;
+//			}
+//		}
+//		if (!exchange)
+//		{
+//			break;
+//		}
+//	}
+//}
+
+//阶乘递归的空间复杂度为 O(N)
+//递归看深度
+
+//斐波那契数列的空间复杂度为 O(N)
+//空间是可以重复利用不累计的，时间是不能重复利用，累计的
+
+int main()
+{
+
+
+	return 0;
+}
+
 ////递归阶乘
 //long long Fib(size_t N)
 //{
@@ -31,60 +72,60 @@
 //	return 0;
 //}
 
-size_t BitPut(size_t n)
-{
-	if (n)
-	{
-		BitPut(n / 2);
-		printf("%d", n % 2);
-	}
-	return n;
-}
-
-void BitPut1(size_t n)
-{
-	if (!n)
-	{
-		printf("0");
-	}
-	BitPut(n);
-}
-
-void BitPut2(size_t number)
-{
-#define INT_SIZE 32
-	int arr[INT_SIZE] = { 0 };
-	int i = 0, j = 0;
-	int symbol = ((int)number >= 0) ? 0 : 1;
-	if (symbol)
-	{
-		number++;
-	}
-	for (i = 0;i < INT_SIZE; i++)
-	{
-		if (number)
-		{
-			arr[i] = number % 2;
-			number /= 2;
-		}
-		else
-		{
-			arr[i] = symbol;
-		}
-	}
-	while (--i)
-	{
-		printf("%d", arr[i]);
-	}
-	printf("%d", arr[0]);
-}
-
-int main()
-{
-	BitPut1(-0);
-
-	return 0;
-}
+//size_t BitPut(size_t n)
+//{
+//	if (n)
+//	{
+//		BitPut(n / 2);
+//		printf("%d", n % 2);
+//	}
+//	return n;
+//}
+//
+//void BitPut1(size_t n)
+//{
+//	if (!n)
+//	{
+//		printf("0");
+//	}
+//	BitPut(n);
+//}
+//
+//void BitPut2(size_t number)
+//{
+//#define INT_SIZE 32
+//	int arr[INT_SIZE] = { 0 };
+//	int i = 0, j = 0;
+//	int symbol = ((int)number >= 0) ? 0 : 1;
+//	if (symbol)
+//	{
+//		number++;
+//	}
+//	for (i = 0;i < INT_SIZE; i++)
+//	{
+//		if (number)
+//		{
+//			arr[i] = number % 2;
+//			number /= 2;
+//		}
+//		else
+//		{
+//			arr[i] = symbol;
+//		}
+//	}
+//	while (--i)
+//	{
+//		printf("%d", arr[i]);
+//	}
+//	printf("%d", arr[0]);
+//}
+//
+//int main()
+//{
+//	BitPut1(-0);
+//
+//	return 0;
+//}
 
 //二分查找 O(logN)
 //int BinarySearch(int* const arr, size_t count, int destination)
