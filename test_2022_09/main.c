@@ -5,6 +5,38 @@
 #include<time.h>
 #include<stdlib.h>
 
+/*
+* 数组nums包含从0到n的所有整数，但其中缺了一个
+* 请编写代码找出缺失的整数，要求	O(N)
+*/
+
+//输入[3 0 1]
+//输出 2
+
+int NoNumberSearch(int* sourse, size_t number)
+{
+	int i = 0;
+	int sum_number = 0;
+	int sum_sourse = 0;
+	for (i = 0; i < number; i++)
+	{
+		sum_number += i;
+		sum_sourse += sourse[i];
+	}
+	sum_number += i;
+	return sum_number - sum_sourse;
+}
+
+int main()
+{
+	//qsort()快速排序->时间复杂度 O(N * logN)
+
+	int arr[5] = { 0,1,3,2,4 };
+	printf("%d\n", NoNumberSearch(arr, 5));
+
+	return 0;
+}
+
 //空间复杂度
 
 ////冒泡排序 O(1)
@@ -39,12 +71,6 @@
 //斐波那契数列的空间复杂度为 O(N)
 //空间是可以重复利用不累计的，时间是不能重复利用，累计的
 
-int main()
-{
-
-
-	return 0;
-}
 
 ////递归阶乘
 //long long Fib(size_t N)
