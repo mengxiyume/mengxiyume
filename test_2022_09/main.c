@@ -6,6 +6,93 @@
 #include<stdlib.h>
 
 /*
+* 旋转数组
+* 给定一个数组，将数组中的元素向右移动k个位置，其中k是非负数
+*/
+
+////空间复杂度O(1)
+//void RotateArr1(int* destination, size_t number, size_t k)
+//{
+//	assert(destination && number);
+//	int k1 = k % number;
+//	int tmp = *destination;
+//	int i = 0;
+//
+//	for (k = 1; k <= k1; k++)		//进行k1次移动
+//	{
+//		tmp = *destination;
+//		for (i = 0; i < number - 1; i++)
+//		{
+//			//向左移动1位
+//			destination[i] = destination[i + 1];
+//		}
+//		destination[i] = tmp;
+//	}
+//}
+
+void exchange(int* number1, int* number2)
+{
+	assert(number1 && number2);
+	int tmp = *number1;
+	if (!(number1 == number2))
+	{							//如果地址是同一个地址，就不做运算
+		*number1 = *number2;
+		*number2 = tmp;
+	}
+}
+//空间复杂度O(N)
+// 原地算法
+void RotateArr2(int* destination, size_t number, size_t k)
+{
+	assert(destination && number);
+	int k1 = k % number;
+	int i = 0;
+	int* beging = destination;
+	int* end = destination + number - k1;
+	for (i = 0; i < (number - k1) / 2; i++)
+	{
+		exchange(beging + i, end - i - 1);		//倒转前n个数
+	}
+	for (i = 0; i < k1 / 2; i++)
+	{
+		exchange(end, beging + number - i - 1);	//倒转后n个数
+	}
+	for (i = 0; i < number / 2; i++)
+	{
+		exchange(beging + i, beging + number - i - 1);	//整体倒转得到旋转
+	}
+}
+
+int main()
+{
+	//int m;
+	//float x;
+	////x = (0.003 * 100 + 0.5) / 100.0;
+	//m = 0.006 * 100 + 0.5;
+	//x = m / 100.0;
+	//
+	//printf("%f", x);
+
+	int arr[10] = { 1,2,3,4,5,6,7,8,9,10 };
+	int i = 0;
+	for (i = 0; i < 10; i++)
+	{
+		printf("%d ", arr[i]);
+	}
+	printf("\n");
+
+	RotateArr2(arr, 10, 100);
+
+	for (i = 0; i < 10; i++)
+	{
+		printf("%d ", arr[i]);
+	}
+	printf("\n");
+	return 0;
+}
+
+
+/*
 * 数组nums包含从0到n的所有整数，但其中缺了一个
 * 请编写代码找出缺失的整数，要求	O(N)
 */
@@ -13,29 +100,45 @@
 //输入[3 0 1]
 //输出 2
 
-int NoNumberSearch(int* sourse, size_t number)
-{
-	int i = 0;
-	int sum_number = 0;
-	int sum_sourse = 0;
-	for (i = 0; i < number; i++)
-	{
-		sum_number += i;
-		sum_sourse += sourse[i];
-	}
-	sum_number += i;
-	return sum_number - sum_sourse;
-}
-
-int main()
-{
-	//qsort()快速排序->时间复杂度 O(N * logN)
-
-	int arr[5] = { 0,1,3,2,4 };
-	printf("%d\n", NoNumberSearch(arr, 5));
-
-	return 0;
-}
+//int NoNumberSearch1(int* sourse, size_t number)
+//{
+//	int i = 0;
+//	int sum_number = 0;
+//	int sum_sourse = 0;
+//	for (i = 0; i < number; i++)
+//	{
+//		sum_number += i;
+//		sum_sourse += sourse[i];
+//	}
+//	sum_number += i;
+//	return sum_number - sum_sourse;
+//}
+////全加后全减，有明显边界效应
+//
+//int NoNumberSearch2(int* sourse, size_t number)
+//{
+//	assert(sourse && number);
+//	int last = 0;
+//	int i = 0;
+//
+//	for (i = 0; i < number; i++)
+//	{
+//		last ^= i;			//全部异或后，再和数组中的值异或
+//		last ^= sourse[i];
+//	}
+//
+//	return last ^= i;		//最后一个数
+//}	//无明显边界效应
+//
+//int main()
+//{
+//	//qsort()快速排序->时间复杂度 O(N * logN)
+//	//寻找数组(0,n)中缺少的一个数字
+//	int arr[5] = { 0,1,5,3,4 };
+//	printf("%d\n", NoNumberSearch2(arr, 5));
+//
+//	return 0;
+//}
 
 //空间复杂度
 
